@@ -9,7 +9,12 @@ class App extends Component{
   render(){
     return(
       <Wrapper>
-      <Title>Friends List</Title>
+      <Title>
+        <div>
+					<span>Score: </span>
+					<span>High Score: </span>
+				</div>
+      </Title>
       <FriendCard
         name={friends[0].name}
         image={friends[0].image}
