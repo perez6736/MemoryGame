@@ -14,9 +14,34 @@ class App extends Component{
         friends,
         score: 0,
         highScore: 0,
-        active: false
+        clicked: false
     };
   } 
+
+  // this method is a shuffle method from stackoverflow. 
+  //
+  // Shuffles array in place. ES6 version
+  // @param {Array} a items An array containing the items.
+  shuffle(friends) {
+    for (let i = friends.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [friends[i], friends[j]] = [friends[j], friends[i]];
+    }
+    return friends;
+  }
+
+
+  //this will reset the isClicked property 
+  resetClick(){
+    const friends = this.state.friends.map(friend => friend.isClicked = false);
+				this.setState({friends});
+  }
+
+  //when we mount we need to shuffle. 
+  componentWillMount() {
+    // this.renderStatus();
+    this.shuffle(friends);
+  }
 
   render(){
     return(
@@ -27,14 +52,13 @@ class App extends Component{
 					<span>High Score: </span>
 				</div>
       </Title>
-      <Body className="cards">
+      <Body>
         {this.state.friends.map(friend => 
         <FriendCard
-          pickCard={this.pickCard}
           key={friend.id}
           id={friend.id}
           name={friend.name}
-        image={friend.image}/>)}
+          image={friend.image}/>)}
 			</Body>
     </Wrapper>
     )
