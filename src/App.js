@@ -37,6 +37,12 @@ class App extends Component{
 				this.setState({friends});
   }
 
+  // psuedo code -- 
+  // will have a method that sees when a card is clicked
+  // if the card has a class of clicked then game is over and we reset score. 
+  // if the card isnt clicked then we will give the user a score - check to see if the score is a new high score if it is change the new high score 
+  // and shuffle the cards again using the shuffle method 
+
   //when we mount we need to shuffle. 
   componentWillMount() {
     // this.renderStatus();
