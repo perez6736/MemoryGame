@@ -1,6 +1,6 @@
 import React from "react";
 import "./Body.css";
 
-const Title = props => <h1 className="title">{props.children}</h1>;
+const Body = props => <div className="body">{props.children}</div>;
 
-export default Title;
+export default Body;
