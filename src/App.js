@@ -3,9 +3,21 @@ import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import FriendCard from "./components/FriendCard";
 import friends from "./friends.json";
+import Body from "./components/Body";
 
 
 class App extends Component{
+  constructor(props) {
+    super(props);
+    // these are the variables we will use for the app. 
+    this.state = {
+        friends,
+        score: 0,
+        highScore: 0,
+        active: false
+    };
+  } 
+
   render(){
     return(
       <Wrapper>
@@ -15,21 +27,15 @@ class App extends Component{
 					<span>High Score: </span>
 				</div>
       </Title>
-      <FriendCard
-        name={friends[0].name}
-        image={friends[0].image}
-        isClicked={friends[0].isClicked}
-      />
-      <FriendCard
-        name={friends[1].name}
-        image={friends[1].image}
-        isClicked={friends[1].isClicked}
-      />
-      <FriendCard
-        name={friends[2].name}
-        image={friends[2].image}
-        isClicked={friends[2].isClicked}
-      />
+      <Body className="cards">
+        {this.state.friends.map(friend => 
+        <FriendCard
+          pickCard={this.pickCard}
+          key={friend.id}
+          id={friend.id}
+          name={friend.name}
+        image={friend.image}/>)}
+			</Body>
     </Wrapper>
     )
   }
